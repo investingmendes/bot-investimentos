@@ -1,13 +1,27 @@
 import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
-    Application,
+    ApplicationBuilder,
     CommandHandler,
     CallbackQueryHandler,
     MessageHandler,
     ContextTypes,
     filters  # Esta é a importação crucial que estava faltando
 )
+async def main():
+    application = ApplicationBuilder().token(TOKEN).build()
+    
+    # Adicione seus handlers aqui (os comandos /start etc)
+    application.add_handler(CommandHandler("start", start))
+    
+    await application.initialize()
+    await application.start()
+    print("✅ Bot iniciado com sucesso!")
+    await application.run_until_disconnected()
+
+if __name__ == '__main__':
+    import asyncio
+    asyncio.run(main())
 from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
