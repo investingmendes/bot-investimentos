@@ -1,4 +1,5 @@
 import os
+from telegram.ext import MessageHandler  # Adicione esta linha
 from dotenv import load_dotenv
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
